@@ -17,7 +17,7 @@ namespace CultureInfo
         {
             get
             {
-                return Culture.CurrentCulture == null ? "null" : Culture.CurrentCulture.EnglishName;
+                return Culture.CurrentCulture.EnglishName;
             }
         }
 
@@ -25,12 +25,15 @@ namespace CultureInfo
         {
             get
             {
-                return Culture.CurrentUICulture == null ? "null" : Culture.CurrentUICulture.EnglishName;
+                return Culture.CurrentUICulture.EnglishName;
             }
         }
 
         public void Main(string[] args)
         {
+            Console.WriteLine($"Names '{ _english.Name }' / '{ _french.Name }'");
+            Console.WriteLine($"English names '{ _english.EnglishName }' / '{ _french.EnglishName }'");
+
             Console.WriteLine($"Current cultures before '{ CultureName }' / '{ UICultureName }'");
 
             Culture.DefaultThreadCurrentCulture = _english;
