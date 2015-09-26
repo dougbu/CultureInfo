@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using Culture = System.Globalization.CultureInfo;
@@ -31,6 +32,8 @@ namespace CultureInfo
 
         public void Main(string[] args)
         {
+            Console.WriteLine($"{Encoding.ASCII.GetType().FullName}");
+
             Console.WriteLine($"Names '{ _english.Name }' / '{ _french.Name }'");
             Console.WriteLine($"English names '{ _english.EnglishName }' / '{ _french.EnglishName }'");
 
