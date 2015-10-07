@@ -38,10 +38,13 @@ namespace CultureInfo
             Console.WriteLine($"English names '{ _english.EnglishName }' / '{ _french.EnglishName }'");
 
             Console.WriteLine($"Current cultures before '{ CultureName }' / '{ UICultureName }'");
+            var now = DateTimeOffset.Now;
+            Console.WriteLine("Formatted now '{0:dddd, yyyy/MM/dd/ g}'.", now);
 
             Culture.DefaultThreadCurrentCulture = _english;
             Culture.DefaultThreadCurrentUICulture = _french;
             Console.WriteLine($"Current cultures after default thread switch '{ CultureName }' / '{ UICultureName }'");
+            Console.WriteLine("Formatted now '{0:dddd, yyyy/MM/dd/ g}'.", now);
 
 #if DNXCORE50
             Culture.CurrentCulture = _french;
@@ -51,6 +54,15 @@ namespace CultureInfo
             Thread.CurrentThread.CurrentUICulture = _english;
 #endif
             Console.WriteLine($"Current cultures after current switch '{ CultureName }' / '{ UICultureName }'");
+            Console.WriteLine("Formatted now '{0:dddd, yyyy/MM/dd/ g}'.", now);
+
+#if DNXCORE50
+            Culture.CurrentCulture = Culture.InvariantCulture;
+#else
+            Thread.CurrentThread.CurrentCulture = Culture.InvariantCulture;
+#endif
+            Console.WriteLine($"Current cultures after switch to Invariant '{ CultureName }' / '{ UICultureName }'");
+            Console.WriteLine("Formatted now '{0:dddd, yyyy/MM/dd/ g}'.", now);
         }
     }
 }
